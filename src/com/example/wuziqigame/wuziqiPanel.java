@@ -92,18 +92,18 @@ public class wuziqiPanel extends View {
 		checkGameOver();
 	}
 
-	 protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-	 super.onSizeChanged(w, h, oldw, oldh);
-	 mPanelWidth = w;
-	 mLineHeight = mPanelWidth * 1.0f/ MAX_LINE ;
-	
-	 int pieceWidth = (int) (mLineHeight * radioPieceOfLineHeight);
-	 mWhitePiece = Bitmap.createScaledBitmap(mWhitePiece, pieceWidth,
-	 pieceWidth, false);
-	 mBlackPiece = Bitmap.createScaledBitmap(mBlackPiece, pieceWidth,
-	 pieceWidth, false);
-	
-	 }
+	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+		super.onSizeChanged(w, h, oldw, oldh);
+		mPanelWidth = w;
+		mLineHeight = mPanelWidth * 1.0f / MAX_LINE;
+
+		int pieceWidth = (int) (mLineHeight * radioPieceOfLineHeight);
+		mWhitePiece = Bitmap.createScaledBitmap(mWhitePiece, pieceWidth,
+				pieceWidth, false);
+		mBlackPiece = Bitmap.createScaledBitmap(mBlackPiece, pieceWidth,
+				pieceWidth, false);
+
+	}
 
 	public boolean onTouchEvent(MotionEvent event) {
 		// 如果游戏结束，让下面的方法不产生反应
@@ -140,10 +140,11 @@ public class wuziqiPanel extends View {
 		return new Point((int) (x / mLineHeight), (int) (y / mLineHeight));
 
 	}
-	
+
 	// 逻辑判断是否结束游戏
 	private void checkGameOver() {
 		// TODO Auto-generated method stub
+
 		boolean whiteWin = chechFiveInLine(mWhiteArray);
 		boolean blackWin = chechFiveInLine(mBlackArray);
 		if (whiteWin || blackWin) {
@@ -303,15 +304,17 @@ public class wuziqiPanel extends View {
 		Log.d("MainActivity", "drawPiece");
 		for (int i = 0, n = mWhiteArray.size(); i < n; i++) {
 			Point whitePoint = mWhiteArray.get(i);
-			canvas.drawBitmap(mWhitePiece, (whitePoint.x
-					+ (1 - radioPieceOfLineHeight) / 2) * mLineHeight,
+			canvas.drawBitmap(mWhitePiece,
+					(whitePoint.x + (1 - radioPieceOfLineHeight) / 2)
+							* mLineHeight,
 					(whitePoint.y + (1 - radioPieceOfLineHeight) / 2)
 							* mLineHeight, null);
 		}
 		for (int i = 0, n = mBlackArray.size(); i < n; i++) {
 			Point blackPoint = mBlackArray.get(i);
-			canvas.drawBitmap(mBlackPiece, (blackPoint.x
-					+ (1 - radioPieceOfLineHeight) / 2) * mLineHeight,
+			canvas.drawBitmap(mBlackPiece,
+					(blackPoint.x + (1 - radioPieceOfLineHeight) / 2)
+							* mLineHeight,
 					(blackPoint.y + (1 - radioPieceOfLineHeight) / 2)
 							* mLineHeight, null);
 		}
